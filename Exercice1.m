@@ -8,8 +8,8 @@ k = 0.3;
 J = 800e-6;
 Phim = 200e-3;
 Rs = 0.18;
-dt = 0.0001;
-pas = 1000;
+dt = 0.0000001;
+pas = 1000000;
 i = 1:1:pas;
 t = i * dt;
 
@@ -66,6 +66,7 @@ for i = 1:1:(pas-1)
     %Grandeur m¨¦canique (Courbe 6)
     C(i+1) = Pp * (Phid(i+1) * Iq(i+1) - Phiq(i+1) * Id(i+1));
     Cr(i) = k * We(i);
+    Cr(i) = 0;
     dWm(i) = (C(i) - Cr(i))/J;
     Wm(i+1) = Wm(i) + dWm(i) * dt;
     We(i+1) = Wm(i+1) * Pp;
@@ -76,7 +77,7 @@ for i = 1:1:(pas-1)
 end
 
 %Calcul direct des Ii (Courbe 5)
-I1 = (2/3)^(1/2) * (cos(A) .*Id - sin(A).*Iq(i));
+I1 = (2/3)^(1/2) * (cos(A) .*Id - sin(A).*Iq);
 I2 = (2/3)^(1/2) * (cos(A - pi*2/3).*Id - sin(A - pi*2/3).*Iq);
 I3 = (2/3)^(1/2) * (cos(A - pi*4/3).*Id - sin(A - pi*4/3).*Iq);
 Itot = I1 + I2 + I3;

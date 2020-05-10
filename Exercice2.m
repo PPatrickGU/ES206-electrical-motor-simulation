@@ -133,12 +133,14 @@ Itot = I1 + I2 + I3;
 %Courbes
 
 subplot(3,3,1)
-plot(t, Vo1+50, t, Vo2, t, Vo3-50,'LineWidth',2);
+plot(t, Vo1+10, t, Vo2, t, Vo3-10,'LineWidth',2);
 xlim([0 2*tp]);
+hold on;
+plot(t,tint*1e6,'--',t,tr1*1e6,'--',t,tf1*1e6,'--','linewidth',2);
 title('Tensions triphas¨¦es de l¡¯onduleur')
 xlabel('Temps (s)')
 ylabel('Tension (volt)')
-legend('Vo1 - 50','Vo2','Vo3 +50V')
+legend({'Vo1+50V','Vo2','Vo3-50V','tint*10^6','tr1*10^6','tf1*10^6'},'Location','northeast');
 
 
 subplot(3,3,2)
@@ -175,11 +177,11 @@ legend('I1','I2','I3 ','I1+I2+I3')
 
 
 subplot(3,3,6)
-plot(t, C, t, A, t, We,'LineWidth',2);
+plot(t, C, t, A*10, t, We,'LineWidth',2);
 title('Grandeurs m¨¦caniques')
 xlabel('Temps (s)')
 ylabel('')
-legend('C','A','We')
+legend('C','A*10','We')
 
 
 subplot(3,3,7)
@@ -196,13 +198,6 @@ xlabel('Temps (s)')
 ylabel('Tension (volt)')
 legend('RVo1','RVo2','RVo3')
 
-subplot(3,3,8)
-plot(t, tint,t, tr1, t, tf1, 'LineWidth',2);
-xlim([0 10*tp]);
-title('tint, tr1, tf1')
-xlabel('Temps (s)')
-ylabel('tint(s)')
-legend('tint', 'tr1', 'tf1')
 
 
 
